@@ -4,8 +4,8 @@ import { userInfo } from 'node:os';
 export default defineConfig({
   timeout: 30 * 1000, //30000 ms(30 secs)
   testDir: './tests',
-  fullyParallel: true,
-  workers: 4,
+  fullyParallel: false,
+  workers: 1,
   forbidOnly: true, // Fail if test.only is used (prevents accidental commits)
   //retries: 2,
   metadata: {
@@ -13,6 +13,7 @@ export default defineConfig({
     appPassword: ''
   },
   reporter: [
+    ['list'],                              // prints console output live to terminal
     ['html', { outputFolder: 'reports' }],
     ['allure-playwright'],
   ],
